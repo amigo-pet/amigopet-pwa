@@ -1,4 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
+import { Header } from "./components/common/icon/header/header";
+import { Icon } from "./components/common/icon/icon";
 
 const GET_PETS_QUERY = gql`
   query {
@@ -15,15 +17,9 @@ type Pets = {
 };
 
 function App() {
-  const { data } = useQuery<{ pets: Pets[] }>(GET_PETS_QUERY);
+  // const { data } = useQuery<{ pets: Pets[] }>(GET_PETS_QUERY);
 
-  return (
-    <>
-      {data?.pets.map(({ id, name }) => {
-        return <h1 key={id}>{name}</h1>;
-      })}
-    </>
-  );
+  return <Header></Header>
 }
 
 export default App;
