@@ -1,5 +1,5 @@
-import { Card } from "../../../components/common/card/card";
+import { AddPet } from "@components/features/pet/add/add-pet.feature";
 
 export const PetProfile = () => {
-  return <Card>works</Card>;
+  return <AddPet />;
 };
