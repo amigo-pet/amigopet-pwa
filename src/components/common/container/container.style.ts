@@ -7,7 +7,7 @@ type ContainerStyledProps = {
 
 export const ContainerStyled = styled.div<ContainerStyledProps>`
   padding: 1rem;
-  ${(props) =>
+  ${props =>
     props?.center &&
     css({
       display: "flex",

@@ -1,7 +1,31 @@
-import { ButtonStyled } from "./button.style"
+import { ReactNode } from "react";
+import { ButtonStyled } from "./button.style";
 
-export const Button = () => {
+type ButtonPros = {
+  children: ReactNode;
+  variant?: "filled" | "ghost";
+  icon?: JSX.Element;
+  loading?: boolean;
+  disabled?: boolean;
+};
+
+export const Button = ({
+  children,
+  variant,
+  icon,
+  loading = false,
+  disabled = false,
+  ...rest
+}: ButtonPros) => {
   return (
-    <ButtonStyled>Salvar</ButtonStyled>
-  )
-}
+    <ButtonStyled
+      variant={variant}
+      icon={icon}
+      loading={loading}
+      disabled={loading || disabled}
+      {...rest}
+    >
+      {children}
+    </ButtonStyled>
+  );
+};

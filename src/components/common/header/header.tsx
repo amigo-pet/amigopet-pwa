@@ -1,10 +1,16 @@
-import { Icon } from "../icon/icon";
+import { ReactNode } from "react";
+import { Icon } from "@components/common";
 import { HeaderStyled } from "./header.style";
 
-export const Header = () => {
+type HeaderProps = {
+  children: ReactNode;
+};
+
+export const Header = ({ children }: HeaderProps) => {
   return (
     <HeaderStyled>
       <Icon name="chevron_left" />
+      {children}
       <Icon name="notifications" />
     </HeaderStyled>
   );

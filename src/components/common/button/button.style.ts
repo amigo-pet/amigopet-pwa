@@ -1,6 +1,14 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const ButtonStyled = styled.button`
+type ButtonStyledProps = {
+  variant?: "filled" | "ghost";
+  icon?: JSX.Element;
+  loading: boolean;
+};
+
+export const ButtonStyled = styled.button<ButtonStyledProps>`
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,5 +17,16 @@ export const ButtonStyled = styled.button`
   min-width: 18.125rem;
   width: 100%;
   height: 2.25rem;
-  color: #FFFFFF;
+  color: #ffffff;
+
+  ${props =>
+    props.loading &&
+    css({
+      ":disabled": {
+        cursor: "not-allowed",
+      },
+      "::before": {
+        content: '"LOADING"',
+      },
+    })}
 `;
