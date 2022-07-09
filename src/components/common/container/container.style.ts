@@ -1,16 +1,11 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-type ContainerStyledProps = {
-  center: boolean;
-};
-
-export const ContainerStyled = styled.div<ContainerStyledProps>`
-  padding: 1rem;
-  ${(props) =>
-    props?.center &&
-    css({
-      display: "flex",
-      justifyContent: "center",
-    })}
+export const ContainerStyled = styled.div`
+  width: 14rem;
+  height: 6rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightblue;
 `;

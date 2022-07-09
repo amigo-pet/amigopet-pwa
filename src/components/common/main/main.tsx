@@ -7,7 +7,7 @@ type MainProps = {
 
 export const Main = ({ children }: MainProps) => {
   return (
-    <Container as="main" center>
+    <Container as="main">
       {children}
     </Container>
   );

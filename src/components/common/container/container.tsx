@@ -4,7 +4,7 @@ import { ContainerStyled } from "./container.style";
 type ContainerProps = {
   children: ReactNode;
   as?: ElementType;
-  center: boolean;
+  center?: boolean;
 };
 
 export const Container = ({ children, ...props }: ContainerProps) => {

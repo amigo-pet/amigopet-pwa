@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+// @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 export default css`
   *:where(:not(html, iframe, canvas, img, svg, video):not(svg *, symbol *)) {
