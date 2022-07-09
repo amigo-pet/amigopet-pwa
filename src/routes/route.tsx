@@ -3,7 +3,7 @@ import {
   Routes as Switch,
   Route,
 } from "react-router-dom";
-import { PetProfile } from "../views/profile/pet/pet";
+import { PetProfile } from "@views/profile/pet/pet";
 
 export const Routes = () => {
   return (

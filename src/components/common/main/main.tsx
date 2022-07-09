@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Container } from "../container/container";
+import { Container } from "@components/common";
 
 type MainProps = {
   children: ReactNode;
