@@ -43,7 +43,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
         width: "20px",
         height: "20px",
         animation: `${spin} 2s linear infinite`,
-        margin: "0 auto"
+        margin: "0 auto",
       },
     })}
 `;

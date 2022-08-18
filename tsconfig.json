@@ -2,10 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
-    "declarationDir": "./src/types",
-    "types": [
-      "./src/types"
-    ],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
