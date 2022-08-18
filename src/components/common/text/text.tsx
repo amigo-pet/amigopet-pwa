@@ -2,13 +2,13 @@ import { ReactNode } from "react"
 import { TextStyled } from "./text.style"
 
 type TextProps = {
-    type?: "title" | "subTitle",
+    size?: "md" | "lg",
     color?: "blue" | "gray" | "white"
     children: ReactNode
 }
 
-export const Text = ({ children, type, color }: TextProps) => {
+export const Text = ({ children, size, color }: TextProps) => {
     return (
-        <TextStyled type={type} color={color}>{children}</TextStyled>
+        <TextStyled size={size} color={color}>{children}</TextStyled>
     )
 }

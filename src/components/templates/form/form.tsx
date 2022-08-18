@@ -1,5 +1,4 @@
 import {
-  BaseSyntheticEvent,
   FormHTMLAttributes,
   forwardRef,
   ForwardRefRenderFunction,

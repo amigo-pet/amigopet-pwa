@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
-export const IconStyled = styled.span`
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+export const IconStyled = styled.i`
+  font-size: 1.5rem;
+  transform: ${props => `rotateX(${props.rotate}deg)`};
+  color: ${props => props.color};
 `;

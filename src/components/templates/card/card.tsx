@@ -3,11 +3,14 @@ import { CardStyled } from "./card.style";
 
 type CardProps = {
   background?: "gradient" | "blue";
-  variant?:string;
+  variant?: string;
   children: ReactNode;
 };
 
-
-export const Card = ({ children, background,variant }: CardProps) => {
-   return <CardStyled variant={variant} background={background}>{children}</CardStyled>;
+export const Card = ({ children, background, variant }: CardProps) => {
+  return (
+    <CardStyled variant={variant} background={background}>
+      {children}
+    </CardStyled>
+  );
 };

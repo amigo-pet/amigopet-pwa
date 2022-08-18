@@ -6,9 +6,5 @@ type MainProps = {
 };
 
 export const Main = ({ children }: MainProps) => {
-  return (
-    <Container as="main">
-      {children}
-    </Container>
-  );
+  return <Container as="main">{children}</Container>;
 };

@@ -1,11 +1,20 @@
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 type ButtonStyledProps = {
   variant?: "filled" | "ghost";
   icon?: JSX.Element;
-  loading: boolean;
+  isLoading: boolean;
 };
+
+const spin = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`;
 
 export const ButtonStyled = styled.button<ButtonStyledProps>`
   cursor: pointer;
@@ -20,13 +29,21 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   color: #ffffff;
 
   ${props =>
-    props.loading &&
+    props.isLoading &&
     css({
       ":disabled": {
         cursor: "not-allowed",
+        justifyContent: "normal",
       },
-      "::before": {
-        content: '"LOADING"',
+      "&::before": {
+        content: "''",
+        border: "2px solid #f3f3f3",
+        borderRadius: "50%",
+        borderTop: "2px solid #3498db",
+        width: "20px",
+        height: "20px",
+        animation: `${spin} 2s linear infinite`,
+        margin: "0 auto"
       },
     })}
 `;

@@ -3,17 +3,24 @@ import {
   ForwardRefRenderFunction,
   InputHTMLAttributes,
 } from "react";
-import { InputStyled } from "./input.style";
+import { Icon } from "@components/common";
+import I from "./input.style";
 
 type InputProps = {
-  icon?: string;
+  icon?: JSX.Element;
+  variant: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const _Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  props,
+  { icon, variant, ...props },
   ref
 ) => {
-  return <InputStyled ref={ref} {...props} />;
+  return (
+    <I.Container variant={variant} {...props}>
+      {Boolean(icon) && icon}
+      <I.Input ref={ref} {...props} />
+    </I.Container>
+  );
 };
 
 export const Input = forwardRef(_Input);

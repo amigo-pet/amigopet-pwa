@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { ButtonStyled } from "./button.style";
 
-type ButtonPros = {
+type ButtonProps = {
   children: ReactNode;
   variant?: "filled" | "ghost";
   icon?: JSX.Element;
-  loading?: boolean;
+  isLoading?: boolean;
   disabled?: boolean;
 };
 
@@ -13,19 +13,19 @@ export const Button = ({
   children,
   variant,
   icon,
-  loading = false,
-  disabled = false,
+  isLoading,
+  disabled,
   ...rest
-}: ButtonPros) => {
+}: ButtonProps) => {
   return (
     <ButtonStyled
       variant={variant}
       icon={icon}
-      loading={loading}
-      disabled={loading || disabled}
+      isLoading={true}
+      disabled={Boolean(isLoading) || Boolean(disabled)}
       {...rest}
     >
-      {children}
+      {!isLoading && children}
     </ButtonStyled>
   );
 };

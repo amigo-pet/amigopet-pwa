@@ -9,9 +9,9 @@ type HeaderProps = {
 export const Header = ({ children }: HeaderProps) => {
   return (
     <HeaderStyled>
-      <Icon name="chevron_left" />
+      <Icon name="ph-caret-left" />
       {children}
-      <Icon name="notifications" />
+      <Icon name="ph-notification" />
     </HeaderStyled>
   );
 };
