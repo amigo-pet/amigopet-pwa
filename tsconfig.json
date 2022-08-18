@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "./src/types",
+    "types": [
+      "./src/types"
+    ],
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -17,14 +26,35 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@views/*": ["./src/views/*"],
-      "@templates/*": ["./src/components/templates/*"],
-      "@entities/*": ["./src/entities/*"],
-      "@mutations/*": ["./src/mutations/*"],
-      "@queries/*": ["./src/queries/*"]
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@views/*": [
+        "./src/views/*"
+      ],
+      "@templates/*": [
+        "./src/components/templates/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@entities/*": [
+        "./src/entities/*"
+      ],
+      "@mutations/*": [
+        "./src/mutations/*"
+      ],
+      "@queries/*": [
+        "./src/queries/*"
+      ]
     }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
