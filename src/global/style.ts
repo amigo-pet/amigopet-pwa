@@ -265,6 +265,13 @@ export default css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f2f8ff;
+    height: 100%;
+  }
+
+  div#root {
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
   }
 `;

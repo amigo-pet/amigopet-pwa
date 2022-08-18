@@ -5,14 +5,18 @@ import { client } from "./api/apollo";
 import { Global, ThemeProvider } from "@emotion/react";
 import App from "./App";
 import { style, theme } from "./global";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./api/query";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Global styles={style} />
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Global styles={style} />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </QueryClientProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
