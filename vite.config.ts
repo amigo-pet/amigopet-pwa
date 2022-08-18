@@ -31,6 +31,10 @@ export default defineConfig({
         find: "@entities",
         replacement: path.resolve(__dirname, "src", "entities"),
       },
+      {
+        find: "@assets",
+        replacement: path.resolve(__dirname, "src", "assets"),
+      },
     ],
   },
   plugins: [
@@ -40,6 +44,7 @@ export default defineConfig({
         name: "Amigo Pet",
         description: "My Awesome App description",
         theme_color: "#ffffff",
+        start_url: "/",
         icons: [
           {
             src: "pwa-192x192.png",
