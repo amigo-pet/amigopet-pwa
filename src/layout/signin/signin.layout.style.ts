@@ -20,4 +20,4 @@ export const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-`
+`;

@@ -4,6 +4,7 @@ import { Form } from "@components/templates/form/form";
 import { BaseSyntheticEvent, useRef } from "react";
 import { Pet } from "@entities/pet";
 import { ADD_PET_MUTATION } from "@mutations/pet";
+import logger from "loglevel";
 
 type ErrorMessage = {
   message: string;
@@ -39,7 +40,7 @@ export const AddPet = () => {
       });
     } catch (error) {
       const { networkError } = error as ApolloError;
-      console.error("ERROR", (networkError as ServerError).result.errors);
+      logger.error("ERROR", (networkError as ServerError).result.errors);
     }
   };
 
@@ -49,12 +50,19 @@ export const AddPet = () => {
         disabled={loading}
         id="name"
         name="name"
-        onInvalid={() => console.log("onInvalid")}
-        onError={() => console.log("onError")}
+        onInvalid={() => logger.info("onInvalid")}
+        onError={() => logger.info("onError")}
+        variant=""
       />
-      <Input disabled={loading} id="birthDate" name="birthDate" type="date" />
-      <Input disabled={loading} id="gender" name="gender" />
-      <Button loading={loading}>Salvar</Button>
+      <Input
+        disabled={loading}
+        id="birthDate"
+        name="birthDate"
+        type="date"
+        variant=""
+      />
+      <Input disabled={loading} id="gender" name="gender" variant="" />
+      <Button isLoading={loading}>Salvar</Button>
       {error &&
         (error?.networkError as ServerError)?.result?.errors?.map(
           ({ message }: ErrorMessage) =>

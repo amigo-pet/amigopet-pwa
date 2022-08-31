@@ -25,7 +25,7 @@ const Container = styled.div<InputStyledProps>`
 
   ${({ theme, variant }) =>
     css({
-      ...theme?.input[variant],
+      ...theme?.input[variant as keyof typeof theme.input],
     })}
 `;
 

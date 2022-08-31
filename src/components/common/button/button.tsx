@@ -21,7 +21,7 @@ export const Button = ({
     <ButtonStyled
       variant={variant}
       icon={icon}
-      isLoading={true}
+      isLoading={isLoading}
       disabled={Boolean(isLoading) || Boolean(disabled)}
       {...rest}
     >

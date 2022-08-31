@@ -42,7 +42,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
         borderTop: "2px solid #3498db",
         width: "20px",
         height: "20px",
-        animation: `${spin} 2s linear infinite`,
+        animation: `${spin} 1s linear infinite`,
         margin: "0 auto",
       },
     })}

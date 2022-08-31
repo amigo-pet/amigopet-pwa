@@ -21,6 +21,7 @@
     "axios": "^0.27.2",
     "graphql": "^16.5.0",
     "immer": "^9.0.15",
+    "loglevel": "^1.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.34.1",

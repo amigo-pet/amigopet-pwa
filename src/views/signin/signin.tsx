@@ -3,6 +3,7 @@ import { oauthApi } from "../../api/oauth";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Icon, Input } from "@components/common";
 import { useMutation } from "@tanstack/react-query";
+import logger from "loglevel";
 
 type OutletContext = {
   state: {
@@ -44,7 +45,7 @@ export const SignIn = () => {
       navigate("/confirmation");
     },
     onError: err => {
-      console.log("ERR", err);
+      logger.error(err);
     },
   });
 
@@ -89,16 +90,6 @@ export const SignIn = () => {
 
     if (inputRef.current?.value) {
       inputRef.current.value = `(${ddd}) ${phoneNumber}`;
-    }
-  };
-
-  const handleSubmit = async (phone_number: string) => {
-    const response = await oauthApi.post("/send-code", {
-      connection: "sms",
-      phone_number: `+55${phone_number.toString().replace(/[^\d]/g, "")}`,
-    });
-    if (response.status === 200) {
-      navigate("/confirmation");
     }
   };
 

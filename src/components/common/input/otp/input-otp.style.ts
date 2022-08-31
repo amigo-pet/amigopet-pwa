@@ -6,7 +6,7 @@ export const InputOtpStyled = styled.input`
   width: 30px;
   text-align: center;
 
-   ${({ theme, variant }) =>
+  ${({ theme, variant }) =>
     css({
       ...theme?.input[variant],
     })}

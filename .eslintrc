@@ -35,5 +35,10 @@
     "react-hooks",
     "prettier"
   ],
-  "rules": {}
+  "rules": {
+    "no-console": 2,
+    "no-unused-vars": "error",
+    "no-import-assign": "error",
+    "@typescript-eslint/no-explicit-any": "error"
+  }
 }

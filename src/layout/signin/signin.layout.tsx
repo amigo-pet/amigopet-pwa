@@ -6,30 +6,45 @@ import { Outlet } from "react-router-dom";
 import { Button } from "@components/common";
 import immer from "immer";
 
+type Action = {
+  payload: object;
+  type: string;
+};
+
+type State = {
+  loading: boolean;
+  phoneNumber: string;
+  labelName: string;
+  typeSubmit: string;
+  buttonName: string;
+  otp: string;
+};
+
 const reducers = {
-  setFormSignin: (state: unknown, action: { payload: unknown }) => {
+  setFormSignin: (state: State, action: Action) => {
     return {
       ...state,
       ...action.payload,
     };
   },
-  setLoading: (state, action) => {
-    state.loading = action.payload;
+  setLoading: (state: State, action: Action) => {
+    state.loading = Boolean(action.payload);
   },
-  handleSubmitSignin: (state, action) => {
-    const formData = new FormData(action.payload);
+  handleSubmitSignin: (state: State, action: Action) => {
+    const formData = new FormData(action.payload as HTMLFormElement);
     const { phone_number } = Object.fromEntries(formData.entries());
-    state.phoneNumber = phone_number;
+    state.phoneNumber = phone_number as string;
   },
-  handleSubmitConfirmation: (state, action) => {
-    const formData = new FormData(action.payload);
+  handleSubmitConfirmation: (state: State, action: Action) => {
+    const formData = new FormData(action.payload as HTMLFormElement);
     const data = Array.from(formData.values());
     state.otp = data.join("");
   },
 };
 
-function reducer(state, action) {
-  const fn = reducers[action.type];
+function reducer(state: State, action: Action) {
+  const fn = reducers[action.type as keyof typeof reducers];
+
   if (fn) {
     return immer(state, draftState => fn(draftState, action));
   }
@@ -37,9 +52,7 @@ function reducer(state, action) {
 }
 
 export const SigninLayout = () => {
-  const [state, dispatch] = useReducer(reducer, {});
-
-  console.log("state", state);
+  const [state, dispatch] = useReducer(reducer, {} as State);
 
   return (
     <Container>
@@ -61,7 +74,7 @@ export const SigninLayout = () => {
           }}
         />
         <LoginBanner />
-        <Button isLoading={true}>{state.buttonName}</Button>
+        <Button isLoading={state.loading}>{state.buttonName}</Button>
       </Form>
     </Container>
   );

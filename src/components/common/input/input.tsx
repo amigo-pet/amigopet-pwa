@@ -3,7 +3,6 @@ import {
   ForwardRefRenderFunction,
   InputHTMLAttributes,
 } from "react";
-import { Icon } from "@components/common";
 import I from "./input.style";
 
 type InputProps = {

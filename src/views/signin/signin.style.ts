@@ -15,4 +15,3 @@ export const Container = styled.div`
   max-width: 320px;
   height: 100vh;
 `;
-
