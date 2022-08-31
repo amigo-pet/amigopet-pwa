@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { CardStyled } from "./card.style";
 
 type CardProps = {
-  background?: "gradient" | "blue";
+  background: "gradient" | "blue";
   variant?: string;
   children: ReactNode;
 };

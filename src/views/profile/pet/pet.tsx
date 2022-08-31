@@ -7,9 +7,7 @@ export const PetProfile = () => {
     <>
       <Card background="gradient">
         <Container>
-          <Text type="title" color="blue">
-            Fênix
-          </Text>
+          <Text color="blue">Fênix</Text>
           <Text>Sem raça definida</Text>
           <Text>RGA 1.234.567</Text>
           <Text>Microchip 123456789012345</Text>

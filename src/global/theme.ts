@@ -62,6 +62,13 @@ export const theme = {
       color: color.gray,
       fontWeight: weight.medium,
     },
+    default: {
+      width: "104px",
+      height: "69px",
+      fontSize: fontSize.md,
+      color: color.gray,
+      fontWeight: weight.medium,
+    },
   },
   button: {
     size: {

@@ -3,13 +3,14 @@ import styled from "@emotion/styled";
 
 type CardStyledProps = {
   background: "gradient" | "blue";
-  variant: string;
+  variant?: string;
 };
 
 export const CardStyled = styled.div<CardStyledProps>`
   ${props =>
     css({
-      ...(props.theme.card[props.variant] || props.theme.card.default),
+      ...(props.theme.card[props.variant as keyof typeof props.theme.card] ||
+        props.theme.card.default),
     })}
   width: 18.5rem;
   height: 17rem;

@@ -1,3 +1,4 @@
 node_modules
 config
 vite-env.d.ts
+vite.config.ts
