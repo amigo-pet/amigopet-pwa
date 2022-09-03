@@ -4,24 +4,13 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { Icon, Input } from "@components/common";
 import { useMutation } from "@tanstack/react-query";
 import logger from "loglevel";
+import { DispatchSignin } from "./types";
 
 type OutletContext = {
   state: {
     phoneNumber: string;
   };
   dispatch: Dispatch<DispatchSignin>;
-};
-
-type DispatchSignin = {
-  type: string;
-  payload?:
-    | {
-        labelName?: string;
-        buttonName?: string;
-        typeSubmit?: string;
-      }
-    | string
-    | boolean;
 };
 
 export const SignIn = () => {
@@ -97,6 +86,7 @@ export const SignIn = () => {
     <Input
       id="phone_number"
       name="phone_number"
+      inputMode="tel"
       type="text"
       variant="transparant"
       onBlur={e => formatPhoneNumber(e.target.value)}

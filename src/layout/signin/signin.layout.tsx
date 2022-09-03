@@ -1,9 +1,8 @@
 import { useReducer } from "react";
 import { Container, Form } from "./signin.layout.style";
 import { FullLogo, LoginBanner } from "@assets/img";
-import { Text } from "@components/common/text/text";
 import { Outlet } from "react-router-dom";
-import { Button } from "@components/common";
+import { Button, Text } from "@components/common";
 import immer from "immer";
 
 type Action = {

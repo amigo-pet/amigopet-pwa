@@ -57,17 +57,14 @@ export default defineConfig({
             type: "image/png",
           },
         ],
-      },
+      },  
       registerType: "autoUpdate",
       devOptions: {
-        enabled: true,
+        enabled: true,        
       },
       workbox: {
-        mode: process.env.NODE_ENV,
+        mode: process.env.NODE_ENV,        
       },
     }),
   ],
-  // define: {
-  //   "process.env.NODE_ENV": '"development"',
-  // },
 });
