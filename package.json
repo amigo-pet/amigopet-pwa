@@ -1,7 +1,7 @@
 {
   "name": "amigopet.app",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.12.6",
   "engines": {
     "node": "16.x",
     "npm": "8.x"
