@@ -8,10 +8,10 @@
       "DOM",
       "DOM.Iterable",
       "ESNext"
-    ],
-    "allowJs": false,
+    ],    
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,

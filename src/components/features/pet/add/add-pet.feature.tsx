@@ -1,10 +1,10 @@
 import { ApolloError, ServerError, useMutation } from "@apollo/client";
 import { Button, Input } from "@components/common";
 import { Form } from "@components/templates/form/form";
-import { BaseSyntheticEvent, useRef } from "react";
 import { Pet } from "@entities/pet";
 import { ADD_PET_MUTATION } from "@mutations/pet";
 import logger from "loglevel";
+import { BaseSyntheticEvent, useRef } from "react";
 
 type ErrorMessage = {
   message: string;
@@ -66,7 +66,7 @@ export const AddPet = () => {
       {error &&
         (error?.networkError as ServerError)?.result?.errors?.map(
           ({ message }: ErrorMessage) =>
-            message && <h1 key={message}>{message}</h1>
+            message && <h1 key={message}>{message}</h1>,
         )}
     </Form>
   );

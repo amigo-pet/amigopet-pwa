@@ -1,14 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { ApolloProvider } from "@apollo/client";
-import { client } from "./api/apollo";
 import { Global, ThemeProvider } from "@emotion/react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { createRoot } from "react-dom/client";
+import { client } from "./api/apollo";
+import { queryClient } from "./api/query";
 import App from "./App";
 import { style, theme } from "./global";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./api/query";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <QueryClientProvider client={queryClient}>
@@ -18,5 +19,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         </ThemeProvider>
       </QueryClientProvider>
     </ApolloProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

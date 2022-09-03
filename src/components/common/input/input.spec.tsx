@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
 import { Input } from "./input";
+import { render } from "../../../config/tests/test-utils";
 
 describe("Input", () => {
   it("Render input component correctly", () => {
