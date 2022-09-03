@@ -1,18 +1,21 @@
 import { InputOtp } from "@components/common/input/otp/input-otp";
 import { useMutation } from "@tanstack/react-query";
+import { Logger } from "aws-amplify";
 import { ClipboardEvent, Dispatch, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { oauthApi } from "../../../api/oauth";
 import { DispatchSignin } from "../types";
 import { Box } from "./signin-confirmation.style";
 
+const logger = new Logger("[SIGIN][CONFIRMATION]");
+
 type State = {
   phoneNumber: string;
   otp: string;
-}
+};
 
 type OutletContext = {
-  state: State,
+  state: State;
   dispatch: Dispatch<DispatchSignin>;
 };
 
@@ -37,7 +40,6 @@ export const SigninConfirmation = () => {
     });
   }, []);
 
-
   useEffect(() => {
     if (otpSMS) {
       mutate({ phoneNumber, otp: otpSMS });
@@ -51,26 +53,26 @@ export const SigninConfirmation = () => {
       navigator.credentials
         .get({
           otp: {
-            transport: ["sms"]
+            transport: ["sms"],
           },
-          signal: controller.signal
+          signal: controller.signal,
         })
-        .then((otp) => {
-          console.log("otp", otp?.code);
-          setOtp(otp?.code?.split("") as Array<String>)
+        .then(otp => {
+          setOtp(otp?.code?.split("") as Array<string>);
+          logger.log("otp", otp);
           controller.abort();
         })
-        .catch((err) => {
+        .catch(() => {
           controller.abort();
-          console.log("err", err);
-        }).finally(() => {
+        })
+        .finally(() => {
           dispatch({
             type: "setLoading",
             payload: false,
-          })
+          });
         });
     }
-  }, [])
+  }, []);
 
   const sendOtpCode = async ({ phoneNumber, otp }: State) => {
     const response = await oauthApi.post("/validade-code", {
@@ -81,12 +83,12 @@ export const SigninConfirmation = () => {
     return response;
   };
 
-  const { mutate, isLoading } = useMutation(sendOtpCode, {
+  const { mutate } = useMutation(sendOtpCode, {
     onSuccess() {
       navigate("/");
     },
     onError: err => {
-      // logger.error(err);
+      logger.log("err", err);
     },
   });
 

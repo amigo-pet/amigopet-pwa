@@ -3,8 +3,10 @@ import { oauthApi } from "../../api/oauth";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Icon, Input } from "@components/common";
 import { useMutation } from "@tanstack/react-query";
-import logger from "loglevel";
 import { DispatchSignin } from "./types";
+import { Logger } from "aws-amplify";
+
+const logger = new Logger("[SIGIN]");
 
 type OutletContext = {
   state: {
