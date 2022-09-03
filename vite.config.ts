@@ -35,6 +35,10 @@ export default defineConfig({
         find: "@assets",
         replacement: path.resolve(__dirname, "src", "assets"),
       },
+      {
+        find: "./runtimeConfig",
+        replacement: "./runtimeConfig.browser"
+      }
     ],
   },
   plugins: [
@@ -57,13 +61,13 @@ export default defineConfig({
             type: "image/png",
           },
         ],
-      },  
+      },
       registerType: "autoUpdate",
       devOptions: {
-        enabled: true,        
+        enabled: true,
       },
       workbox: {
-        mode: process.env.NODE_ENV,        
+        mode: process.env.NODE_ENV,
       },
     }),
   ],

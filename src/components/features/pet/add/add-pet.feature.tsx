@@ -3,8 +3,10 @@ import { Button, Input } from "@components/common";
 import { Form } from "@components/templates/form/form";
 import { Pet } from "@entities/pet";
 import { ADD_PET_MUTATION } from "@mutations/pet";
-import logger from "loglevel";
+import { Logger } from "aws-amplify";
 import { BaseSyntheticEvent, useRef } from "react";
+
+const logger = new Logger("[FEATURE][ADD PET]");
 
 type ErrorMessage = {
   message: string;

@@ -7,6 +7,10 @@ import { client } from "./api/apollo";
 import { queryClient } from "./api/query";
 import App from "./App";
 import { style, theme } from "./global";
+import { Amplify } from "aws-amplify";
+import awsExports from "./aws-exports";
+
+Amplify.configure(awsExports);
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
