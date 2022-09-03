@@ -12,7 +12,7 @@ type FormProps = {
 
 const _Form: ForwardRefRenderFunction<HTMLFormElement, FormProps> = (
   { children, ...props },
-  ref
+  ref,
 ) => {
   return (
     <FormStyled ref={ref} {...props}>

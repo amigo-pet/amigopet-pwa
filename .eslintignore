@@ -2,3 +2,6 @@ node_modules
 config
 vite-env.d.ts
 vite.config.ts
+src/*.js
+src/assets/**
+.eslintrc.js

@@ -1,27 +1,19 @@
 import { InputOtp } from "@components/common/input/otp/input-otp";
+import { useMutation } from "@tanstack/react-query";
 import { ClipboardEvent, Dispatch, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { oauthApi } from "../../../api/oauth";
+import { DispatchSignin } from "../types";
 import { Box } from "./signin-confirmation.style";
 
-type OutletContext = {
-  state: {
-    phoneNumber: string;
-    otp: string;
-  };
-  dispatch: Dispatch<DispatchSignin>;
-};
+type State = {
+  phoneNumber: string;
+  otp: string;
+}
 
-type DispatchSignin = {
-  type: string;
-  payload?:
-    | {
-        labelName?: string;
-        buttonName?: string;
-        typeSubmit?: string;
-      }
-    | string
-    | boolean;
+type OutletContext = {
+  state: State,
+  dispatch: Dispatch<DispatchSignin>;
 };
 
 export const SigninConfirmation = () => {
@@ -45,22 +37,58 @@ export const SigninConfirmation = () => {
     });
   }, []);
 
+
   useEffect(() => {
     if (otpSMS) {
-      handleSubmit(phoneNumber, otpSMS);
+      mutate({ phoneNumber, otp: otpSMS });
     }
   }, [otpSMS]);
 
-  const handleSubmit = async (phone_number: string, otp: string) => {
+  useEffect(() => {
+    const controller = new AbortController();
+
+    if ("OTPCredential" in window) {
+      navigator.credentials
+        .get({
+          otp: {
+            transport: ["sms"]
+          },
+          signal: controller.signal
+        })
+        .then((otp) => {
+          console.log("otp", otp?.code);
+          setOtp(otp?.code?.split("") as Array<String>)
+          controller.abort();
+        })
+        .catch((err) => {
+          controller.abort();
+          console.log("err", err);
+        }).finally(() => {
+          dispatch({
+            type: "setLoading",
+            payload: false,
+          })
+        });
+    }
+  }, [])
+
+  const sendOtpCode = async ({ phoneNumber, otp }: State) => {
     const response = await oauthApi.post("/validade-code", {
-      phone_number: `+55${phone_number.toString().replace(/[^\d]/g, "")}`,
+      phone_number: `+55${phoneNumber.toString().replace(/[^\d]/g, "")}`,
       connection: "sms",
       code: otp,
     });
-    if (response.status === 200) {
-      navigate("/");
-    }
+    return response;
   };
+
+  const { mutate, isLoading } = useMutation(sendOtpCode, {
+    onSuccess() {
+      navigate("/");
+    },
+    onError: err => {
+      // logger.error(err);
+    },
+  });
 
   const handleOtp = async (element: HTMLInputElement, index: number) => {
     if (isNaN(Number(element.value))) return false;
@@ -84,14 +112,16 @@ export const SigninConfirmation = () => {
       {otp.slice(0, 6).map((value, index) => {
         return (
           <InputOtp
-            variant="transparant"
-            maxLength={1}
             key={index}
             id={`otp-${index}`}
             name={`otp-${index}`}
             value={value}
+            variant="transparant"
+            maxLength={1}
             onChange={e => handleOtp(e.target, index)}
             onPaste={onPaste}
+            inputMode="numeric"
+            autoComplete="one-time-code"
             type="text"
           />
         );

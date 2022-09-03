@@ -76,7 +76,7 @@ export const theme = {
     },
   },
   input: {
-    transparant: {
+    transparent: {
       background: "rgba(255, 236, 236, 0.42)",
       border: "1px solid #EEF6FF",
       borderRadius: "8px",

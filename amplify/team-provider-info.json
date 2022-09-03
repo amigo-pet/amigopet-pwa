@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amigopetpwa-dev-225835-authRole",
+      "UnauthRoleArn": "arn:aws:iam::367425747114:role/amplify-amigopetpwa-dev-225835-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::367425747114:role/amplify-amigopetpwa-dev-225835-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amigopetpwa-dev-225835-deployment",
+      "UnauthRoleName": "amplify-amigopetpwa-dev-225835-unauthRole",
+      "StackName": "amplify-amigopetpwa-dev-225835",
+      "StackId": "arn:aws:cloudformation:us-east-1:367425747114:stack/amplify-amigopetpwa-dev-225835/ee882000-2b2b-11ed-9bdc-0a39ec0fd121",
+      "AmplifyAppId": "d2z33pvg8731kh"
+    }
+  }
+}

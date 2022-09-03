@@ -12,7 +12,7 @@ type InputProps = {
 
 const _Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { icon, variant, ...props },
-  ref
+  ref,
 ) => {
   return (
     <I.Container variant={variant} {...props}>
