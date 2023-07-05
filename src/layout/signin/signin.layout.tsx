@@ -3,11 +3,11 @@ import { Container, Form } from "./signin.layout.style";
 import { FullLogo, LoginBanner } from "@assets/img";
 import { Outlet } from "react-router-dom";
 import { Button, Text } from "@components/common";
-import immer from "immer";
+import { produce } from "immer";
 
 type Action = {
   payload: object;
-  type: string;
+  type: keyof typeof reducers;
 };
 
 type State = {
@@ -41,11 +41,14 @@ const reducers = {
   },
 };
 
-function reducer(state: State, action: Action) {
-  const fn = reducers[action.type as keyof typeof reducers];
+type Reducers = keyof typeof reducers;
+
+function reducer(state: State, action: Action): State {
+  const fn = reducers[action.type as Reducers];
 
   if (fn) {
-    return immer(state, draftState => fn(draftState, action));
+    const newState = produce(draftState => fn(draftState, action));
+    return newState(state);
   }
   return state;
 }
@@ -63,7 +66,7 @@ export const SigninLayout = () => {
         onSubmit={e => {
           e.preventDefault();
           e.persist();
-          dispatch({ type: state.typeSubmit, payload: e.target });
+          dispatch({ type: state.typeSubmit as Reducers, payload: e.target });
         }}
       >
         <Outlet

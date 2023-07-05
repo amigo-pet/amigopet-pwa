@@ -1,4 +1,3 @@
-import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { Global, ThemeProvider } from "@emotion/react";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -10,14 +9,12 @@ import { style, theme } from "./global";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <QueryClientProvider client={queryClient}>
-        <Global styles={style} />
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </ApolloProvider>
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <QueryClientProvider client={queryClient}>
+      <Global styles={style} />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
+  </ApolloProvider>,
 );
