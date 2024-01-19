@@ -1,3 +1,9 @@
-interface CredentialRequestOptions { otp: OTPOptions; }
-interface OTPOptions { transport: string[]; }
-interface CredentialType extends Credential { code?: string };
+interface CredentialRequestOptions {
+  otp: OTPOptions;
+}
+interface OTPOptions {
+  transport: string[];
+}
+interface Credential {
+  code?: string;
+}
