@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.2",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "18.x",
+    "npm": "9.x"
   },
   "scripts": {
     "dev": "vite",
@@ -16,19 +16,19 @@
     "posttest": "yarn lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@tanstack/react-query": "^4.1.3",
-    "aws-amplify": "^4.3.34",
-    "axios": "^0.27.2",
-    "graphql": "^16.5.0",
-    "immer": "^9.0.15",
-    "loglevel": "^1.8.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-hook-form": "^7.34.1",
-    "react-router-dom": "6"
+    "@apollo/client": "3.7.16",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@tanstack/react-query": "4.29.19",
+    "aws-amplify": "5.3.3",
+    "axios": "1.4.0",
+    "graphql": "16.6.0",
+    "immer": "10.0.2",
+    "loglevel": "1.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.45.1",
+    "react-router-dom": "6.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
