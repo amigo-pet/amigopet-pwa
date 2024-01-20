@@ -1,12 +1,6 @@
-import styled from "@emotion/styled";
-
-const Box = styled.span`
-  margin: 0 auto;
-`;
-
 export const LoginBanner = () => {
   return (
-    <Box>
+    <div>
       <svg
         width="260"
         height="260"
@@ -33,6 +27,6 @@ export const LoginBanner = () => {
           />
         </defs>
       </svg>
-    </Box>
+    </div>
   );
 };

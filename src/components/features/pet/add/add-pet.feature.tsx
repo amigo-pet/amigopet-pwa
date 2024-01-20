@@ -1,6 +1,6 @@
 import { ApolloError, ServerError, useMutation } from "@apollo/client";
-import { Button, Input } from "@components/common";
-import { Form } from "@components/templates/form/form";
+import { Button, Input } from "@/components/common";
+import { Form } from "@/components/templates/form/form";
 import { Pet } from "@entities/pet";
 import { ADD_PET_MUTATION } from "@mutations/pet";
 import { Logger } from "aws-amplify";

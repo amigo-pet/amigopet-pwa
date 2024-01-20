@@ -1,13 +1,7 @@
-import styled from "@emotion/styled";
-
-const Box = styled.span`
-  align-self: center;
-  margin: 25px 0;
-`;
 
 export const FullLogo = () => {
   return (
-    <Box>
+    <>
       <svg
         width="223"
         height="60"
@@ -48,6 +42,6 @@ export const FullLogo = () => {
           fill="white"
         />
       </svg>
-    </Box>
+    </>
   );
 };

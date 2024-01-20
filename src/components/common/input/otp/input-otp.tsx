@@ -1,5 +1,4 @@
 import { InputHTMLAttributes } from "react";
-import { InputOtpStyled } from "./input-otp.style";
 
 type InputOtpProps = {
   icon?: JSX.Element;
@@ -7,5 +6,5 @@ type InputOtpProps = {
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const InputOtp = (props: InputOtpProps) => {
-  return <InputOtpStyled {...props} />;
+  return <input {...props} />;
 };

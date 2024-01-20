@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
+    node: true
   },
   settings: {
     "import/resolver": {
@@ -50,6 +51,7 @@ module.exports = {
     "no-unused-vars": "error",
     "no-import-assign": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "import/export": 0
+    "import/export": 0,
+    "react/prop-types": 0
   },
 };

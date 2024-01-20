@@ -1,4 +1,4 @@
-import { Icon } from "@components/common";
+import { Icon } from "@/components/common";
 import { BottomNavigationStyled } from "./bottom.navigation.style";
 
 export const BottomNavigation = () => {

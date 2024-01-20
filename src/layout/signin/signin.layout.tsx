@@ -1,9 +1,10 @@
 import { useReducer } from "react";
-import { Container, Form } from "./signin.layout.style";
-import { FullLogo, LoginBanner } from "@assets/img";
+import { FullLogo, LoginBanner } from "@/assets/img";
 import { Outlet } from "react-router-dom";
-import { Button, Text } from "@components/common";
+import { Text } from "@/components/common";
 import { produce } from "immer";
+import { Form } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 
 type Action = {
   payload: object;
@@ -57,7 +58,7 @@ export const SigninLayout = () => {
   const [state, dispatch] = useReducer(reducer, {} as State);
 
   return (
-    <Container>
+    <div>
       <FullLogo />
       <Text size="md" color="white">
         {state.labelName}
@@ -76,8 +77,8 @@ export const SigninLayout = () => {
           }}
         />
         <LoginBanner />
-        <Button isLoading={state.loading}>{state.buttonName}</Button>
+        <Button>{state.buttonName}</Button>
       </Form>
-    </Container>
+    </div>
   );
 };

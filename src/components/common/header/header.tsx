@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Icon } from "@components/common";
+import { Icon } from "@/components/common";
 import { HeaderStyled } from "./header.style";
 
 type HeaderProps = {

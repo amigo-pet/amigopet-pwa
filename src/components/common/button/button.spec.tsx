@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { render } from "@testing-library/react";
-import { Button } from "./button";
 
 describe("Button", () => {
   it("Render button component correctly", () => {

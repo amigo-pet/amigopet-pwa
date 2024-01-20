@@ -1,11 +1,10 @@
-import { IconStyled } from "./icon.style";
-
 type IconProps = {
   name: string;
   color?: string;
   rotate?: string;
+  className?: string;
 };
 
-export const Icon = ({ name, ...props }: IconProps) => {
-  return <IconStyled className={name} {...props} />;
+export const Icon = ({ name, className, ...props }: IconProps) => {
+  return <i className={`${name} ${className}`} {...props} />;
 };

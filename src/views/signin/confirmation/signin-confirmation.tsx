@@ -1,13 +1,9 @@
-import { InputOtp } from "@components/common/input/otp/input-otp";
+import { InputOtp } from "@/components/common/input/otp/input-otp";
 import { useMutation } from "@tanstack/react-query";
-import { Logger } from "aws-amplify";
 import { ClipboardEvent, Dispatch, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { oauthApi } from "../../../api/oauth";
+import { oauthAPI } from "../../../api/oauth";
 import { DispatchSignin } from "../types";
-import { Box } from "./signin-confirmation.style";
-
-const logger = new Logger("[SIGIN][CONFIRMATION]");
 
 type State = {
   phoneNumber: string;
@@ -59,7 +55,7 @@ export const SigninConfirmation = () => {
         })
         .then(otp => {
           setOtp(otp?.code?.split("") as Array<string>);
-          logger.log("otp", otp);
+          console.log("otp", otp);
           controller.abort();
         })
         .catch(() => {
@@ -75,7 +71,7 @@ export const SigninConfirmation = () => {
   }, []);
 
   const sendOtpCode = async ({ phoneNumber, otp }: State) => {
-    const response = await oauthApi.post("/validade-code", {
+    const response = await oauthAPI.post("/validade-code", {
       phone_number: `+55${phoneNumber.toString().replace(/[^\d]/g, "")}`,
       connection: "sms",
       code: otp,
@@ -88,7 +84,7 @@ export const SigninConfirmation = () => {
       navigate("/");
     },
     onError: err => {
-      logger.log("err", err);
+      console.log("err", err);
     },
   });
 
@@ -110,7 +106,7 @@ export const SigninConfirmation = () => {
   };
 
   return (
-    <Box>
+    <>
       {otp.slice(0, 6).map((value, index) => {
         return (
           <InputOtp
@@ -128,6 +124,6 @@ export const SigninConfirmation = () => {
           />
         );
       })}
-    </Box>
+    </>
   );
 };

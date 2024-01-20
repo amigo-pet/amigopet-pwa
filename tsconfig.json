@@ -7,7 +7,7 @@
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ESNext"
+      "ESNext",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -22,26 +22,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@views/*": [
-        "./src/views/*"
-      ],
-      "@templates/*": [
-        "./src/components/templates/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@entities/*": [
-        "./src/entities/*"
-      ],
-      "@mutations/*": [
-        "./src/mutations/*"
-      ],
-      "@queries/*": [
-        "./src/queries/*"
+      "@/*": [
+        "./src/*"
       ]
     }
   },

@@ -1,23 +1,24 @@
-import {
-  BrowserRouter as Router,
-  Routes as Switch,
-  Route,
-} from "react-router-dom";
-import * as View from "@views/index";
-import { SigninLayout } from "../layout/signin/signin.layout";
-import { Button } from "@components/common";
+import { queryClient } from "@/api/query";
+import { Root } from "@/layout";
+import { loader } from "@/queries/pet/get-pets/get-pets.query";
+import { Pets } from "@/views/pets/pets";
+import { createBrowserRouter } from "react-router-dom";
 
-export const Routes = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route index element={<View.PetProfile />} />
-        <Route path="button" element={<Button isLoading>Teste</Button>} />
-        <Route element={<SigninLayout />}>
-          <Route path="login" element={<View.SignIn />} />
-          <Route path="confirmation" element={<View.SigninConfirmation />} />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    errorElement: <div>ERROR</div>,
+    children: [
+      {
+        index: true,
+        element: <div className="container mt-16"><Pets></Pets></div>,
+        loader: loader(queryClient)
+      },
+      {
+        path: "signin",
+        element: <div>ROOT</div>,
+      },
+    ],
+  },
+]);

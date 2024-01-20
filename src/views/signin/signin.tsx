@@ -1,12 +1,9 @@
 import { Dispatch, useEffect, useRef } from "react";
-import { oauthApi } from "../../api/oauth";
+import { oauthAPI } from "../../api/oauth";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { Icon, Input } from "@components/common";
 import { useMutation } from "@tanstack/react-query";
 import { DispatchSignin } from "./types";
-import { Logger } from "aws-amplify";
-
-const logger = new Logger("[SIGIN]");
+import { Input } from "@/components/ui/input";
 
 type OutletContext = {
   state: {
@@ -24,19 +21,19 @@ export const SignIn = () => {
   const navigate = useNavigate();
 
   const sendPhoneNumber = async (phoneNumber: string) => {
-    const response = await oauthApi.post("/send-code", {
+    const response = await oauthAPI.post("/send-code", {
       connection: "sms",
       phone_number: `+55${phoneNumber.toString().replace(/[^\d]/g, "")}`,
     });
     return response;
   };
 
-  const { mutate, isLoading } = useMutation(sendPhoneNumber, {
+  const { mutate } = useMutation(sendPhoneNumber, {
     onSuccess() {
       navigate("/confirmation");
     },
     onError: err => {
-      logger.error(err);
+      console.error(err);
     },
   });
 
@@ -90,13 +87,9 @@ export const SignIn = () => {
       name="phone_number"
       inputMode="tel"
       type="text"
-      variant="transparant"
       onBlur={e => formatPhoneNumber(e.target.value)}
       maxLength={13}
       ref={inputRef}
-      icon={
-        <Icon name="ph-device-mobile-camera" rotate="-180" color="#0025AA" />
-      }
     />
   );
 };

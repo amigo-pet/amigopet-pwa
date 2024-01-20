@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { TextStyled } from "./text.style";
 
 type TextProps = {
   size?: "md" | "lg";
@@ -7,10 +6,6 @@ type TextProps = {
   children: ReactNode;
 };
 
-export const Text = ({ children, size, color }: TextProps) => {
-  return (
-    <TextStyled size={size} color={color}>
-      {children}
-    </TextStyled>
-  );
+export const Text = ({ children }: TextProps) => {
+  return <p>{children}</p>;
 };
